@@ -3,16 +3,25 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 
+require('dotenv').config();
+const botToken = process.env.TELEGRAM_BOT_TOKEN;
+const chatId = process.env.TELEGRAM_CHAT_ID;
+
 const app = express();
 const port = 5000;
+
+// route for the root URL
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 // Replace with your Telegram bot token
-const botToken = '7717317938:AAFLEFgWk1qwWU51PJjKhzfb93o3ChJfcjc';
-const chatId = '7802949854';
+// const botToken = '7717317938:AAFLEFgWk1qwWU51PJjKhzfb93o3ChJfcjc';
+// const chatId = '7802949854';
 
 const bot = new TelegramBot(botToken, { polling: false });
 
