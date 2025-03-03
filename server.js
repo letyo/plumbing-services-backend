@@ -1,14 +1,15 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const TelegramBot = require('node-telegram-bot-api');
 
-require('dotenv').config();
 const botToken = process.env.TELEGRAM_BOT_TOKEN;
 const chatId = process.env.TELEGRAM_CHAT_ID;
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // route for the root URL
 app.get('/', (req, res) => {
